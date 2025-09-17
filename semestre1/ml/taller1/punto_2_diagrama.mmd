@@ -1,0 +1,54 @@
+graph LR
+  %% --- Nodos por categoría ---
+  subgraph Datos
+    BD2[Big Data]
+  end
+
+  subgraph "Métodos y técnicas"
+    DM2[Minería de datos]
+    ML2[Machine Learning]
+    DL2[Deep Learning]
+  end
+
+  subgraph Disciplinas
+    IA2[Inteligencia Artificial]
+    DS2[Ciencia de datos]
+    EST2[Estadística]
+  end
+
+  subgraph Aplicaciones
+    BI2[Inteligencia de negocios]
+    TD2[Toma de decisiones]
+  end
+
+  %% --- Relaciones de inclusión ---
+  IA2 -->|incluye| ML2
+  ML2 -->|incluye| DL2
+
+  %% --- Fundamentos ---
+  EST2 -->|fundamenta| DS2
+  EST2 -->|fundamenta| ML2
+  EST2 -->|fundamenta| DM2
+
+  %% --- Uso/flujo de trabajo ---
+  DM2 -->|técnicas usadas en| DS2
+  DS2 -->|entrega insights a| BI2
+  BI2 -->|apoya| TD2
+
+  %% --- Datos que alimentan procesos ---
+  BD2 -->|alimenta| DS2
+  BD2 -->|alimenta| ML2
+  BD2 -->|alimenta| DL2
+  BD2 -->|alimenta| DM2
+  BD2 -.->|puede alimentar| BI2
+
+  %% --- Estilos opcionales ---
+  classDef datos fill:#f2f7ff,stroke:#7aa7ff,stroke-width:1px;
+  classDef metodos fill:#f9f5ff,stroke:#b592ff,stroke-width:1px;
+  classDef disciplinas fill:#f4fff5,stroke:#69c27d,stroke-width:1px;
+  classDef apps fill:#fff7f2,stroke:#ffa573,stroke-width:1px;
+
+  class BD2 datos;
+  class DM2,ML2,DL2 metodos;
+  class IA2,DS2,EST2 disciplinas;
+  class BI2,TD2 apps;
